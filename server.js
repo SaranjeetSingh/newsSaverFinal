@@ -29,7 +29,8 @@ app.use(express.static("public"));
 
 // Connect to the Mongo DB
 //need to configure MONGODB_URI to heroku 
-let url = process.env.MONGODB_URI || "mongodb://localhost/unit18Populater";
+var MONGOLAB_URI="mongodb://usrname:password@saranjeet.mca@gmail.com:Mani27)#,.";
+let url = process.env.MONGOLAB_URI || "mongodb://localhost/unit18Populater";
 mongoose.connect(url, { useNewUrlParser: true });
 
 // Routes
