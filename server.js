@@ -1,6 +1,7 @@
 var express = require("express");
 var logger = require("morgan");
 var mongoose = require("mongoose");
+var mongodb = require('mongodb');
 
 // Our scraping tools
 // Axios is a promised-based http library, similar to jQuery's Ajax method
@@ -27,6 +28,7 @@ app.use(express.json());
 app.use(express.static("public"));
 
 // Connect to the Mongo DB
+//need to configure MONGODB_URI to heroku 
 let url = process.env.MONGODB_URI || "mongodb://localhost/unit18Populater";
 mongoose.connect(url, { useNewUrlParser: true });
 
@@ -39,7 +41,7 @@ app.get("/scrape", function(req, res) {
     // ..and populate all of the notes associated with it
     .then(function(dbArticle) {
       // If we were able to successfully find an Article with the given id, send it back to the client
-    //   res.json(dbArticle);
+      res.json(dbArticle);
     })
     .catch(function(err) {
       // If an error occurred, send it to the client
